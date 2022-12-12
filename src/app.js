@@ -13,8 +13,17 @@ app.use([
   express.json(),
   express.static(join(__dirname, '..', 'public')),
   express.urlencoded({ extended: true }),
-  router,
 ]);
+
+app.use('/api/v1', router);
+
+// eslint-disable-next-line no-unused-vars
+app.use((req, res, next) => res.status(404).json({ error: 'Not Found' }));
+
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  res.status(err.status || 500).json(err.message);
+});
 
 app.set('port', process.env.PORT || 3000);
 

@@ -1,6 +1,7 @@
-const connection = require('../../config/connection');
+const { getQuery } = require('../getQuery');
 
-const addPostQuery = (post_content, post_version, user_id) => connection.query('INSERT INTO post (post_content, post_version, user_id) VALUES (?,?,?)', [post_content, post_version, user_id]);
-// const addPostQuery = () => connection.query('INSERT INTO post (post_content, post_version, user_id) VALUES (1, 2, 1)');
+const date_created = new Date().toLocaleDateString();
+
+const addPostQuery = (post_content, user_id) => getQuery(`INSERT INTO post (post_content, user_id , date_created) VALUES ("${post_content}",${user_id} , "${date_created}")`, [post_content, user_id, date_created]);
 
 module.exports = addPostQuery;
