@@ -1,4 +1,4 @@
-const { addPostQuery, getPostQuery } = require('../../database/query');
+const { addPostQuery, getPostQuery, postPostVersionsQuery } = require('../../database/query');
 const { postValidation } = require('../../validation');
 const { CustomError } = require('../../helpers');
 
@@ -12,8 +12,10 @@ const addPostController = async (req, res, next) => {
       return res.json({ message: 'You cannot add more than 5 posts per day' });
     }
     await addPostQuery(post_content, user_id);
+    await postPostVersionsQuery();
     return res.json({ message: 'Post added successfully' });
   } catch (error) {
+    console.log('error: ', error);
     if (error.name === 'ValidationError') {
       // return next(new CustomError(400, error.errors));
       return next(new CustomError(400, error.errors));

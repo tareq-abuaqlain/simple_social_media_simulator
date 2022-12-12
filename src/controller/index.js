@@ -5,6 +5,7 @@ const { getUserController, addUserController } = require('./userController');
 const { addCommentController, getCommentController } = require('./commentController');
 const { addReplyController, getReplyController } = require('./replyController');
 const { addReplyToReplyController, getReplyToReplyController } = require('./replyToReply');
+const { getPostVersionsController, postPostVersionsController } = require('./postVersions');
 
 module.exports = {
   addPostController,
@@ -20,4 +21,6 @@ module.exports = {
   getReplyController,
   addReplyToReplyController,
   getReplyToReplyController,
+  getPostVersionsController,
+  postPostVersionsController,
 };

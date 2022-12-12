@@ -1,10 +1,11 @@
-const { updatePostQuery } = require('../../database/query');
+const { updatePostQuery, postPostVersionsQuery } = require('../../database/query');
 
 const updatePostController = async (req, res, next) => {
   const { id } = req.params;
   const { post_content } = req.body;
   try {
     await updatePostQuery(post_content, id);
+    await postPostVersionsQuery();
     res.json({ message: 'Post updated successfully' });
   } catch (error) {
     console.log('error: ', error);

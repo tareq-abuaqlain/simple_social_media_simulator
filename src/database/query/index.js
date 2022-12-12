@@ -5,6 +5,7 @@ const { addUserQuery, getUserQuery } = require('./user');
 const { addCommentQuery, getCommentQuery } = require('./comment');
 const { addReplyQuery, getReplyQuery } = require('./reply');
 const { addReplyToReplyQuery, getReplyToReplyQuery } = require('./replyToReply');
+const { getPostVersionsQuery, postPostVersionsQuery } = require('./postVersions');
 
 module.exports = {
   addPostQuery,
@@ -20,4 +21,6 @@ module.exports = {
   getReplyQuery,
   addReplyToReplyQuery,
   getReplyToReplyQuery,
+  getPostVersionsQuery,
+  postPostVersionsQuery,
 };

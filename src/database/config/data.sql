@@ -42,18 +42,10 @@ CREATE TABLE reply (
   FOREIGN KEY (comment_id) REFERENCES comment(id) ON DELETE CASCADE
 );
 
--- CREATE TABLE watch (
---   id INT NOT NULL AUTO_INCREMENT,
---   num_of_watches INT NOT NULL DEFAULT 0,
---   user_id INT NOT NULL,
---   post_id INT NOT NULL,
---   PRIMARY KEY (id),
---   FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
---   FOREIGN KEY (post_id) REFERENCES post(id) ON DELETE CASCADE
--- );
-
 CREATE TABLE one_post_version (
   id INT NOT NULL AUTO_INCREMENT,
+  post_content TEXT NOT NULL,
+  post_version INT NOT NULL,
   post_id INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (post_id) REFERENCES post(id) ON DELETE CASCADE
