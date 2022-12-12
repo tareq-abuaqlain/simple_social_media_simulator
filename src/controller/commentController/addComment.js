@@ -1,12 +1,18 @@
 const { addCommentQuery } = require('../../database/query');
+const { commentValidation } = require('../../validation');
+const { CustomError } = require('../../helpers');
 
-const addCommentController = async (req, res) => {
+const addCommentController = async (req, res, next) => {
   try {
-    const { comment_content, user_id, post_id } = req.body;
+    const { comment_content, user_id, post_id } = await commentValidation.validate(req.body, { abortEarly: false });
     await addCommentQuery(comment_content, user_id, post_id);
-    res.json({ message: 'Comment added successfully' });
+    return res.json({ message: 'Comment added successfully' });
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    if (error.name === 'ValidationError') {
+      // return next(new CustomError(400, error.errors));
+      return next(new CustomError(400, error.errors));
+    }
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
