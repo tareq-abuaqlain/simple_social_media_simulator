@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 require('dotenv').config();
 const { join } = require('path');
 const express = require('express');
@@ -17,10 +18,8 @@ app.use([
 
 app.use('/api/v1', router);
 
-// eslint-disable-next-line no-unused-vars
 app.use((req, res, next) => res.status(404).json({ error: 'Not Found' }));
 
-// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json(err.message);
 });

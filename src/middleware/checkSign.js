@@ -9,8 +9,8 @@ const checkSign = async (req, res, next) => {
     if (!token) {
       res.status(401).json({ message: 'Unauthorized' });
     } else {
-      const decoded = await verifyToken(token, SECRET_KEY);
-      req.user = decoded;
+      const { id } = await verifyToken(token, SECRET_KEY);
+      req.id = id;
       next();
     }
   } catch (error) {

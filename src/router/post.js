@@ -2,8 +2,9 @@ const postRouter = require('express').Router();
 const {
   addPostController, getPostController, updatePostController, deletePostController, addSeenController,
 } = require('../controller');
+const { checkSign } = require('../middleware');
 
-postRouter.get('/', getPostController);
+postRouter.get('/', checkSign, getPostController);
 postRouter.post('/', addPostController);
 postRouter.put('/seen/:id', addSeenController);
 postRouter.put('/:id', updatePostController);

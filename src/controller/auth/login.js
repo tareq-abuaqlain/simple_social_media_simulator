@@ -13,7 +13,7 @@ const login = async (req, res, next) => {
       const { password: hashedPassword } = data[0];
       const isPasswordCorrect = await comparePassword(password, hashedPassword);
       if (isPasswordCorrect) {
-        res.json({ message: 'Login successful', data });
+        res.json({ message: 'Login successful' });
       } else {
         res.status(400).json({ error: 'Invalid email or password' });
       }

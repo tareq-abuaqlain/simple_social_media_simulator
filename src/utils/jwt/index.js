@@ -10,7 +10,7 @@ const verifyToken = (token, secret) => new Promise((resolve, reject) => {
   });
 });
 
-const generateToken = (payload, secret, options) => new Promise((resolve, reject) => {
+const signToken = (payload, secret, options) => new Promise((resolve, reject) => {
   sign(payload, secret, options, (err, token) => {
     if (err) {
       err.status(401);
@@ -21,6 +21,6 @@ const generateToken = (payload, secret, options) => new Promise((resolve, reject
 });
 
 module.exports = {
-  generateToken,
+  signToken,
   verifyToken,
 };

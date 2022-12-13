@@ -9,7 +9,6 @@ const addReplyController = async (req, res, next) => {
     return res.json({ message: 'reply added successfully' });
   } catch (error) {
     if (error.name === 'ValidationError') {
-      // return next(new CustomError(400, error.errors));
       return next(new CustomError(400, error.errors));
     }
     return res.json({ message: 'Internal server error' });

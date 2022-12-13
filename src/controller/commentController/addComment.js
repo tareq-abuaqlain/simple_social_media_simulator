@@ -9,7 +9,6 @@ const addCommentController = async (req, res, next) => {
     return res.json({ message: 'Comment added successfully' });
   } catch (error) {
     if (error.name === 'ValidationError') {
-      // return next(new CustomError(400, error.errors));
       return next(new CustomError(400, error.errors));
     }
     return res.status(500).json({ error: 'Internal Server Error' });
