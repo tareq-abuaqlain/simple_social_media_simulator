@@ -8,7 +8,7 @@ const updatePostController = async (req, res, next) => {
     await postPostVersionsQuery();
     res.json({ message: 'Post updated successfully' });
   } catch (error) {
-    console.log('error: ', error);
+    res.status(500).json({ error: 'Internal server error' });
     next(error);
   }
 };

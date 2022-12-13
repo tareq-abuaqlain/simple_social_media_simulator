@@ -3,6 +3,8 @@ const postValidation = require('./postValidation');
 const commentValidation = require('./commentValidation');
 const replyValidation = require('./replyValidation');
 const replyToReplyValidation = require('./replyToReplyValidation');
+const loginValidation = require('./loginValidation');
+const signUpValidation = require('./signUpValidation');
 
 module.exports = {
   userValidation,
@@ -10,4 +12,6 @@ module.exports = {
   commentValidation,
   replyValidation,
   replyToReplyValidation,
+  loginValidation,
+  signUpValidation,
 };

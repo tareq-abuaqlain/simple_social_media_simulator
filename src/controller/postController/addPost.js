@@ -15,9 +15,7 @@ const addPostController = async (req, res, next) => {
     await postPostVersionsQuery();
     return res.json({ message: 'Post added successfully' });
   } catch (error) {
-    console.log('error: ', error);
     if (error.name === 'ValidationError') {
-      // return next(new CustomError(400, error.errors));
       return next(new CustomError(400, error.errors));
     }
     return res.status(500).json({ error: 'Internal Server Error' });

@@ -1,16 +1,16 @@
 const {
   addPostQuery, getPostQuery, updatePostQuery, deletePostQuery, addSeenQuery,
 } = require('./post');
-const { addUserQuery, getUserQuery } = require('./user');
+const { getUserQuery } = require('./user');
 const { addCommentQuery, getCommentQuery } = require('./comment');
 const { addReplyQuery, getReplyQuery } = require('./reply');
 const { addReplyToReplyQuery, getReplyToReplyQuery } = require('./replyToReply');
 const { getPostVersionsQuery, postPostVersionsQuery } = require('./postVersions');
+const { getUserInfo, insertNewUser, getUserByEmail } = require('./auth');
 
 module.exports = {
   addPostQuery,
   getPostQuery,
-  addUserQuery,
   getUserQuery,
   updatePostQuery,
   deletePostQuery,
@@ -23,4 +23,7 @@ module.exports = {
   getReplyToReplyQuery,
   getPostVersionsQuery,
   postPostVersionsQuery,
+  getUserInfo,
+  insertNewUser,
+  getUserByEmail,
 };
