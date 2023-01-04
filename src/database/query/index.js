@@ -6,7 +6,9 @@ const { addCommentQuery, getCommentQuery } = require('./comment');
 const { addReplyQuery, getReplyQuery } = require('./reply');
 const { addReplyToReplyQuery, getReplyToReplyQuery } = require('./replyToReply');
 const { getPostVersionsQuery, postPostVersionsQuery } = require('./postVersions');
-const { getUserInfo, insertNewUser, getUserByEmail } = require('./auth');
+const {
+  getUserInfo, insertNewUser, getUserByEmail, getLastId,
+} = require('./auth');
 
 module.exports = {
   addPostQuery,
@@ -26,4 +28,5 @@ module.exports = {
   getUserInfo,
   insertNewUser,
   getUserByEmail,
+  getLastId,
 };

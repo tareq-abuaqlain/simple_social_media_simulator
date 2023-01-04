@@ -2,6 +2,6 @@ const logoutRouter = require('express').Router();
 
 const { logout } = require('../controller');
 
-logoutRouter.post('/', logout);
+logoutRouter.get('/', logout);
 
 module.exports = logoutRouter;

@@ -4,10 +4,10 @@ const {
 } = require('../controller');
 const { checkSign } = require('../middleware');
 
-postRouter.get('/', checkSign, getPostController);
-postRouter.post('/', addPostController);
-postRouter.put('/seen/:id', addSeenController);
-postRouter.put('/:id', updatePostController);
-postRouter.delete('/:id', deletePostController);
+postRouter.get('/', getPostController);
+postRouter.post('/', checkSign, addPostController);
+postRouter.put('/seen/:id', checkSign, addSeenController);
+postRouter.put('/:id', checkSign, updatePostController);
+postRouter.delete('/:id', checkSign, deletePostController);
 
 module.exports = postRouter;

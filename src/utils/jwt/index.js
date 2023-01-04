@@ -10,8 +10,8 @@ const verifyToken = (token, secret) => new Promise((resolve, reject) => {
   });
 });
 
-const signToken = (payload, secret, options) => new Promise((resolve, reject) => {
-  sign(payload, secret, options, (err, token) => {
+const signToken = (payload, secret) => new Promise((resolve, reject) => {
+  sign(payload, secret, (err, token) => {
     if (err) {
       err.status(401);
       reject(err);

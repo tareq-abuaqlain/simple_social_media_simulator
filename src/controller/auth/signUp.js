@@ -1,8 +1,9 @@
 const { hashPassword } = require('../../utils');
-const { insertNewUser, getUserByEmail } = require('../../database/query');
+const { insertNewUser, getUserByEmail, getLastId } = require('../../database/query');
 const { signUpValidation } = require('../../validation');
+const { setCookie } = require('../../middleware');
 
-const signup = async (req, res, next) => {
+const signup = async (req, res) => {
   const { username, email, password } = req.body;
   try {
     await signUpValidation.validate({ username, email, password });
@@ -12,9 +13,9 @@ const signup = async (req, res, next) => {
     } else {
       const hashedPassword = await hashPassword(password);
       await insertNewUser(username, email, hashedPassword);
-      res.json({ message: 'Signup successful' });
+      const user = await getLastId();
+      setCookie(req, res, { id: user[0].id, email }, 'Signup successful');
     }
-    next();
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

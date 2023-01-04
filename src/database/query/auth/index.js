@@ -1,9 +1,10 @@
 const getUserByEmail = require('./getUserByEmail');
 const getUserInfo = require('./getUserInfo');
-const insertNewUser = require('./insertNewUser');
+const { insertNewUser, getLastId } = require('./insertNewUser');
 
 module.exports = {
   getUserByEmail,
   getUserInfo,
   insertNewUser,
+  getLastId,
 };
