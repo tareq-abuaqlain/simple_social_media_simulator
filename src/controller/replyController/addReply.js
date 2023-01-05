@@ -4,7 +4,9 @@ const { CustomError } = require('../../helpers');
 
 const addReplyController = async (req, res, next) => {
   try {
-    const { reply_content, user_id, comment_id } = await replyValidation.validate(req.body, { abortEarly: false });
+    const user_id = req.userId;
+    const comment_id = req.params.commentId;
+    const { reply_content } = await replyValidation.validate(req.body, { abortEarly: false });
     await addReplyQuery(reply_content, user_id, comment_id);
     return res.json({ message: 'reply added successfully' });
   } catch (error) {
